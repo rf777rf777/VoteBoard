@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Topics</h1>
-
-<table>
+<h1>Voting!!</h1>
+<div>
+  <%= link_to 'New Topic', new_topic_path ,class: "btn btn-success"%>
+</div>
+<br>
+<table class = "table table-bordered">
   <thead>
     <tr>
       <th>Title </th>
@@ -15,13 +18,13 @@
   <tbody>
     <% @topics.each do |topic| %>
       <tr>
-        <td><%= link_to topic.title , topic %></td>
+        <td class="info"><%= link_to topic.title , topic %></td>
         <!-- <td><%= topic.description %></td> -->
-        <td><%= topic.votes.count %></td>
-        <td><%= button_to "投我" , upvote_topic_path(topic) , method: :post %></td>
+        <td class= "danger"><%= topic.votes.count %></td>
+        <td class="warning"><%= link_to "Vote!" , upvote_topic_path(topic) , method: :post ,class: "btn btn-info" %></td>
         <!--<td><%= link_to 'Show', topic %></td>-->
         <!--<td><%= link_to 'Edit', edit_topic_path(topic) %></td>-->
-        <td><%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="active"><%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +32,3 @@
 
 <br>
 
-<%= link_to 'New Topic', new_topic_path %>
